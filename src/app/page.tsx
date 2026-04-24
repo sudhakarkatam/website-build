@@ -87,8 +87,11 @@ export default function Home() {
 
   const scrollProducts = (direction: 'left' | 'right') => {
     if (productsScrollRef.current) {
-      const scrollAmount = productsScrollRef.current.clientWidth / 2;
-      productsScrollRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+      const el = productsScrollRef.current;
+      const firstChild = el.firstElementChild as HTMLElement;
+      // Scroll exactly by the width of one card + the gap, to make it smooth and slow
+      const scrollAmount = firstChild ? firstChild.offsetWidth + 24 : el.clientWidth / 4;
+      el.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
     }
   };
 
@@ -96,6 +99,24 @@ export default function Home() {
     // Hide preloader after a short delay
     const loaderTimer = setTimeout(() => setIsLoading(false), 2000);
     return () => clearTimeout(loaderTimer);
+  }, []);
+
+  // Products Slider Auto-Play
+  useEffect(() => {
+    const productsTimer = setInterval(() => {
+      if (productsScrollRef.current) {
+         const el = productsScrollRef.current;
+         // If we've reached the end of scroll
+         const isEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 10;
+         if (isEnd) {
+            // Instant snap back to start to avoid fast reverse scroll
+            el.scrollTo({ left: 0, behavior: 'auto' });
+         } else {
+            scrollProducts('right');
+         }
+      }
+    }, 8000);
+    return () => clearInterval(productsTimer);
   }, []);
 
   useEffect(() => {
@@ -149,7 +170,7 @@ export default function Home() {
             >
               {slides.map((slide, idx) => (
                 <div key={idx} className="w-full h-full flex-shrink-0 relative">
-                   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#031d38]/90 via-[#031d38]/50 to-transparent z-10"></div>
+                   {/* Gradient removed per request to make images visible */}
                    <div className="w-full h-full relative z-0">
                        <Image src={slide.img} alt={slide.title} fill className="object-cover" priority sizes="100vw" />
                    </div>
@@ -470,41 +491,87 @@ export default function Home() {
       </section>
 
       {/* 7. TESTIMONIALS */}
-      <section className="py-20 bg-blue-50/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-16">What Our Partners Say About Us</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                text: "HealthTechAI is a remarkably agile pharmaceutical company with clear vision and immense commitment to quality patient outcomes. Their robust AI diagnostic pipelines are game-changers.",
-                author: "Dr. L. Balaji",
-                title: "Chief Medical Officer, Asian Health Network"
-              },
-              {
-                text: "A truly reliable partner for the latest advanced treatment options. They seamlessly merge traditional biosimilars with cutting-edge digital tracking infrastructure.",
-                author: "Parimal Chandra",
-                title: "Director of Procurements, EU MediCorp"
-              },
-              {
-                text: "An ambitious company with an excellent product portfolio. They are growing phenomenally fast and remain our top option for bringing new therapeutic areas to the public market.",
-                author: "Julian Caesar",
-                title: "Head of Operations, LATAM Pharma Distributors"
-              }
-            ].map((test, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 relative">
-                <svg className="absolute top-6 left-6 text-blue-100 w-10 h-10 -ml-2 -mt-2 z-0" fill="currentColor" viewBox="0 0 32 32"><path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"></path></svg>
-                <div className="relative z-10">
-                  <p className="text-gray-600 italic mb-6 leading-relaxed">"{test.text}"</p>
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 bg-gray-200 rounded-full mr-3"></div>
-                    <div>
-                      <h5 className="font-bold text-gray-900 text-sm">{test.author}</h5>
-                      <span className="text-xs text-gray-500">{test.title}</span>
+      <section className="relative py-24">
+        {/* Split Background */}
+        <div className="absolute top-0 left-0 w-full h-[60%] bg-[#F58220]">
+           {/* Subtle Hexagon Pattern */}
+           <svg className="w-full h-full opacity-10 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                 <pattern id="hexagons-test" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(2)">
+                    <path fill="none" stroke="#ffffff" strokeWidth="1" d="M25 0l25 14.4v28.9l-25 14.5L0 43.3V14.5z"/>
+                 </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#hexagons-test)" />
+           </svg>
+        </div>
+        <div className="absolute bottom-0 left-0 w-full h-[40%] bg-[#f4f7fc]"></div>
+        
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-[42px] font-medium text-white">What Our Partners Say About Us</h2>
+          </div>
+          
+          {/* Slider Container */}
+          <div className="relative">
+            <div className="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-8 pt-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+               {[
+                 {
+                   text: "We have been associated with Rheo Pharma for over a period of 4 years. We've witnessed a company's unparalleled commitment to advancing therapeutics through innovative research and a steadfast dedication to patient well-being.",
+                   author: "Michael Roberts",
+                   title: "CEO, Innovate Health Group"
+                 },
+                 {
+                   text: "Rheo Pharma stands out not just for their cutting-edge pharmaceutical solutions, but for their transparent communication, ethical business practices, and a genuine passion for making a positive impact on global health.",
+                   author: "Sarah Jenkins",
+                   title: "Chief Medical Officer, Horizon Care"
+                 },
+                 {
+                   text: "Collaborating with Rheo Pharma has been a transformative experience. Their dynamic team, forward-thinking approach, and consistent delivery of high-quality products make them an invaluable partner in the healthcare ecosystem.",
+                   author: "Dr. David Lin",
+                   title: "Director of Research, Nexus BioTech"
+                 },
+                 {
+                   text: "The dedication of Rheo Pharma towards creating accessible, affordable, and available therapeutics perfectly aligns with our mission. We are proud to partner with a company that puts patient outcomes at the forefront.",
+                   author: "Elena Rodriguez",
+                   title: "VP of Procurement, Global Med Solutions"
+                 }
+               ].map((test, i) => (
+                 <div key={i} className="relative bg-white p-10 lg:p-12 shadow-xl border border-gray-100 flex-shrink-0 w-full md:w-[calc(50%-16px)] lg:w-[calc(33.333%-21px)] snap-start group rounded-sm">
+                    {/* Top Orange Quote Box */}
+                    <div className="absolute -top-6 left-10 w-12 h-12 bg-[#F58220] flex items-center justify-center shadow-md">
+                       <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 32 32">
+                         <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"></path>
+                       </svg>
                     </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+                    
+                    {/* Large subtle background quote icon */}
+                    <svg className="absolute bottom-6 right-6 w-24 h-24 text-blue-50 opacity-50 z-0" fill="currentColor" viewBox="0 0 32 32">
+                       <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"></path>
+                    </svg>
+
+                    <div className="relative z-10 pt-4 flex flex-col h-full justify-between">
+                      <p className="text-gray-500 mb-8 leading-relaxed text-[15px] italic">"{test.text}"</p>
+                      <div className="flex items-center">
+                        <div className="w-12 h-12 bg-slate-200 rounded-full mr-4 flex-shrink-0 border-2 border-white shadow-sm overflow-hidden flex items-center justify-center">
+                           <span className="text-slate-400 font-bold">{test.author.charAt(0)}</span>
+                        </div>
+                        <div>
+                          <h5 className="font-bold text-[#1c2c52] text-[16px]">{test.author}</h5>
+                          <span className="text-xs font-bold text-[#F58220] tracking-wide uppercase">{test.title}</span>
+                        </div>
+                      </div>
+                    </div>
+                 </div>
+               ))}
+            </div>
+            
+            {/* Dots */}
+            <div className="flex justify-center mt-2 space-x-2">
+               <div className="w-2.5 h-2.5 rounded-full bg-[#F58220] cursor-pointer"></div>
+               <div className="w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer hover:bg-[#F58220]/50 transition-colors"></div>
+               <div className="w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer hover:bg-[#F58220]/50 transition-colors"></div>
+               <div className="w-2.5 h-2.5 rounded-full bg-gray-300 cursor-pointer hover:bg-[#F58220]/50 transition-colors"></div>
+            </div>
           </div>
         </div>
       </section>
