@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ed8a19;
+  --color-primary-dark: #d97814;
+  --color-blue-deep: #1c2c52;
+  --color-blue-dark: #111e38;
+  --color-blue-darker: #0d162b;
+  --color-icon-blue: #3d60f4;
+  --color-neutral-light: #F3F4F6;
+  --color-neutral-dark: #374151;
+  --font-sans: var(--font-public-sans);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Card utilities */
+@layer utilities {
+  .card-hover {
+    @apply transition-shadow duration-300 hover:shadow-lg rounded-2xl bg-white border border-gray-100;
+  }
+}
