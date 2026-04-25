@@ -20,10 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${publicSans.variable} min-h-screen antialiased scroll-smooth`}>
+    <html lang="en" className={`${publicSans.variable} min-h-screen antialiased scroll-smooth`} data-scroll-behavior="smooth">
       <body className="flex flex-col min-h-screen bg-white text-zinc-900">
         <Navigation />
-        <main className="flex-grow pt-[84px]">
+        <main className="flex-grow">
           {children}
         </main>
         <Footer />
