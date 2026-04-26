@@ -29,4 +29,18 @@ body {
   .card-hover {
     @apply transition-shadow duration-300 hover:shadow-lg rounded-2xl bg-white border border-gray-100;
   }
+
+  .checkmark-list {
+    @apply list-none pl-0;
+  }
+
+  .checkmark-list li {
+    @apply relative pl-8 mb-4 text-[#5e6271] text-[16px] leading-relaxed;
+  }
+
+  .checkmark-list li::before {
+    content: "✓";
+    @apply absolute left-0 top-0.5 text-[#28a745] font-black text-xl;
+  }
 }
+

@@ -28,6 +28,7 @@ export default function SingleNewsPage() {
                        src="/blog-7.jpeg" 
                        alt="Incorporation News" 
                        fill 
+                       sizes="(max-width: 1200px) 100vw, 80vw"
                        className="object-cover"
                     />
                  </div>

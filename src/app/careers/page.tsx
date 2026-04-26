@@ -39,7 +39,7 @@ export default function CareersPage() {
                            src="/careers-2-e1723012161799.jpeg"
                            alt="Professional at work"
                            fill
-                           sizes="(max-width: 768px) 100vw, 50vw"
+                           sizes="(max-width: 1024px) 100vw, 50vw"
                            className="object-cover scale-110"
                            style={{ objectPosition: 'center 20%' }}
                         />

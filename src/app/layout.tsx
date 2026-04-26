@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${publicSans.variable} min-h-screen antialiased scroll-smooth`} data-scroll-behavior="smooth">
+    <html lang="en" className={`${publicSans.variable} min-h-screen antialiased scroll-smooth`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className="flex flex-col min-h-screen bg-white text-zinc-900">
         <Suspense fallback={null}>
            <RouteLoader />
