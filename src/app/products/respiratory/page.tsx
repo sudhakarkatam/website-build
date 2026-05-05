@@ -3,15 +3,15 @@ import Link from "next/link";
 import Image from "next/image";
 import ContactBanner from "@/components/ContactBanner";
 
-export default function NutraceuticalSupplementsPage() {
+export default function RespiratoryPage() {
   return (
     <div className="flex flex-col w-full min-h-screen bg-white">
       {/* 1. Hero Banner - Match Screenshot */}
       <section className="relative h-[300px] md:h-[400px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/products/pharma/product-banner.jpeg" 
-            alt="Nutraceutical & Supplements Banner" 
+            src="/products/pharma/Respiratory-banner-1.jpeg" 
+            alt="Respiratory Banner" 
             fill 
             className="object-cover"
             priority
@@ -20,7 +20,7 @@ export default function NutraceuticalSupplementsPage() {
         </div>
         <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-[60px] font-bold text-white mb-4 tracking-tight drop-shadow-md">
-            Nutraceutical & Supplements
+            Respiratory
           </h1>
         </div>
       </section>
@@ -32,7 +32,7 @@ export default function NutraceuticalSupplementsPage() {
           <span className="text-[#f39c12] font-bold">&gt;</span>
           <Link href="/products/pharma" className="hover:text-[#f39c12] transition-colors">Pharma</Link>
           <span className="text-[#f39c12] font-bold">&gt;</span>
-          <span className="text-gray-500">Nutraceutical & Supplements</span>
+          <span className="text-gray-500">Respiratory</span>
         </div>
       </div>
 
@@ -45,8 +45,8 @@ export default function NutraceuticalSupplementsPage() {
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
               <div className="relative w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full overflow-hidden border-8 border-gray-50 shadow-2xl">
                 <Image 
-                  src="/products/pharma/gummies.jpeg" 
-                  alt="Nutraceutical & Supplements Solution" 
+                  src="/products/pharma/respiratory.jpeg" 
+                  alt="Respiratory Solution" 
                   fill 
                   className="object-cover"
                 />
@@ -60,8 +60,31 @@ export default function NutraceuticalSupplementsPage() {
             {/* Right Column: Text Content */}
             <div className="w-full lg:w-1/2 space-y-8 text-[#5e6271] text-lg leading-relaxed">
               <p>
-                We offer a comprehensive portfolio of nutritional and supplements portfolio covering wide spectrum of therapy areas in various drug delivery forms like Tablets, Capsules, oral sprays, Gummies, Powders and syrups.
+                Chronic respiratory diseases (CRDs) affect the airways and other structures of the lungs. Some of the most common are chronic obstructive pulmonary disease (COPD), asthma, occupational lung diseases and pulmonary hypertension.
               </p>
+
+              <p>
+                Neither asthma nor chronic obstructive pulmonary disease (COPD) can be cured but treatment can reduce symptoms, prevent deterioration and improve daily life.
+              </p>
+
+              <p>
+                We at Rheo have got a range of solutions to effectively manage these symptoms, prevent deterioration and improve quality of life including
+              </p>
+
+              <ul className="space-y-4">
+                {[
+                  "Nasal Solutions",
+                  "Dry Powder Inhalers",
+                  "Metered Dose inhales"
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-[#17d1a5] rounded-full flex items-center justify-center text-white text-[10px] flex-shrink-0">
+                      ✓
+                    </div>
+                    <span className="font-bold text-[#121f45]">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
           </div>

@@ -3,15 +3,15 @@ import Link from "next/link";
 import Image from "next/image";
 import ContactBanner from "@/components/ContactBanner";
 
-export default function NutraceuticalSupplementsPage() {
+export default function APIPage() {
   return (
     <div className="flex flex-col w-full min-h-screen bg-white">
       {/* 1. Hero Banner - Match Screenshot */}
       <section className="relative h-[300px] md:h-[400px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image 
-            src="/products/pharma/product-banner.jpeg" 
-            alt="Nutraceutical & Supplements Banner" 
+            src="/products/pharma/API-banner.jpeg" 
+            alt="APIs Banner" 
             fill 
             className="object-cover"
             priority
@@ -20,7 +20,7 @@ export default function NutraceuticalSupplementsPage() {
         </div>
         <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 relative z-10">
           <h1 className="text-4xl md:text-5xl lg:text-[60px] font-bold text-white mb-4 tracking-tight drop-shadow-md">
-            Nutraceutical & Supplements
+            APIs
           </h1>
         </div>
       </section>
@@ -32,7 +32,7 @@ export default function NutraceuticalSupplementsPage() {
           <span className="text-[#f39c12] font-bold">&gt;</span>
           <Link href="/products/pharma" className="hover:text-[#f39c12] transition-colors">Pharma</Link>
           <span className="text-[#f39c12] font-bold">&gt;</span>
-          <span className="text-gray-500">Nutraceutical & Supplements</span>
+          <span className="text-gray-500">APIs</span>
         </div>
       </div>
 
@@ -45,8 +45,8 @@ export default function NutraceuticalSupplementsPage() {
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
               <div className="relative w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full overflow-hidden border-8 border-gray-50 shadow-2xl">
                 <Image 
-                  src="/products/pharma/gummies.jpeg" 
-                  alt="Nutraceutical & Supplements Solution" 
+                  src="/products/pharma/API-reactor.jpeg" 
+                  alt="APIs Solution" 
                   fill 
                   className="object-cover"
                 />
@@ -60,7 +60,15 @@ export default function NutraceuticalSupplementsPage() {
             {/* Right Column: Text Content */}
             <div className="w-full lg:w-1/2 space-y-8 text-[#5e6271] text-lg leading-relaxed">
               <p>
-                We offer a comprehensive portfolio of nutritional and supplements portfolio covering wide spectrum of therapy areas in various drug delivery forms like Tablets, Capsules, oral sprays, Gummies, Powders and syrups.
+                Biosimilars are safe and effective treatment options for many illnesses such as chronic skin and bowel diseases (like psoriasis, irritable bowel syndrome, Crohn’s disease and colitis), arthritis, kidney conditions, and cancer. Biosimilars increase access to lifesaving medications at potentially lower costs.
+              </p>
+
+              <p>
+                A vaccine is a biological preparation that provides active acquired immunity to a particular infectious or malignant disease.
+              </p>
+
+              <p>
+                Our portfolio of Biosimilars are majorly targeted in treating diabetes, cancer.
               </p>
             </div>
 

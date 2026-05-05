@@ -49,10 +49,10 @@ export default function ContactBanner() {
               </div>
               <div className="text-white">
                 <p className="text-xl font-bold mb-1">Email Us:</p>
-                <div className="space-y-0.5 opacity-90">
-                  <p>info@rheopharma.com</p>
-                  <p>sales@rheopharma.com</p>
-                  <p>bd@rheopharma.com</p>
+                <div className="space-y-0.5 opacity-90 flex flex-col">
+                  <a href="mailto:info@rheopharma.com" className="hover:underline transition-all">info@rheopharma.com</a>
+                  <a href="mailto:sales@rheopharma.com" className="hover:underline transition-all">sales@rheopharma.com</a>
+                  <a href="mailto:bd@rheopharma.com" className="hover:underline transition-all">bd@rheopharma.com</a>
                 </div>
               </div>
             </div>

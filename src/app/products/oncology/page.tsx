@@ -1,54 +1,80 @@
-import ProductPageTemplate from "@/components/ProductPageTemplate";
-
-export const metadata = {
-  title: "Oncology | Rheo Pharma",
-  description: "Advanced Oncology and cancer care therapeutics.",
-};
-
-const pharmaSidebarLinks = [
-  { name: "CVS & Diabetes", href: "/products/cvs-diabetes" },
-  { name: "Oncology", href: "/products/oncology" },
-  { name: "Biosimilars & Vaccines", href: "/products/biosimilars-vaccines" },
-  { name: "CNS", href: "/products/cns" },
-  { name: "Dermatology", href: "/products/dermatology" },
-  { name: "Respiratory", href: "/products/respiratory" },
-  { name: "Nutraceutical & Supplements", href: "/products/nutraceutical-supplements" },
-  { name: "APIs", href: "/products/api" },
-];
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import ContactBanner from "@/components/ContactBanner";
 
 export default function OncologyPage() {
   return (
-    <ProductPageTemplate 
-      title="Oncology" 
-      category="Pharma" 
-      sidebarLinks={pharmaSidebarLinks}
-      mainImage="/products/pharma/oncology-1.jpeg"
-      bannerImage="/products/pharma/product-banner.jpeg"
-    >
+    <div className="flex flex-col w-full min-h-screen bg-white">
+      {/* 1. Hero Banner - Match Screenshot */}
+      <section className="relative h-[300px] md:h-[400px] flex items-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/products/pharma/oncology-3.jpeg"
+            alt="Oncology Banner"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/20"></div>
+        </div>
+        <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 relative z-10">
+          <h1 className="text-4xl md:text-5xl lg:text-[60px] font-bold text-white mb-4 tracking-tight drop-shadow-md">
+            Oncology
+          </h1>
+        </div>
+      </section>
 
-
-      <div className="space-y-6">
-        <p>
-          The fight against cancer requires accessible and potent treatment options. Rheo Pharma is dedicated to providing high-quality oncology products, including critical chemotherapeutics and targeted therapies, to improve patient survival and quality of life.
-        </p>
-        
-        <p>
-          With great passion and commitment of addressing the fast-rising incidence rates of cancer, we at Rheo are relentlessly working to provide access to high-quality Oncology medicines across the globe. We have a robust portfolio of oncology products covering various types of cancers.
-        </p>
-
-        <h3 className="text-2xl font-bold text-[#121f45] mt-10 mb-6">Therapeutic Coverage</h3>
-        <ul className="checkmark-list">
-          <li>Targeted monoclonal antibodies for specific cancer types.</li>
-          <li>Traditional chemotherapeutic agents for broad-spectrum care.</li>
-          <li>Innovative biosimilars in the oncology space.</li>
-          <li>Supportive care medications to manage side effects and improve quality of life.</li>
-          <li>Advanced oral oncology medications for convenient therapy.</li>
-        </ul>
-
-        <p className="mt-8">
-          Our oncology division works closely with healthcare professionals to ensure that our medications are available where they are needed most, providing hope and healing to patients undergoing cancer treatment.
-        </p>
+      {/* 2. Breadcrumbs */}
+      <div className="bg-[#f8f9fc] py-6 border-b border-gray-100">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 flex items-center space-x-3 text-[15px] font-medium text-[#121f45]">
+          <Link href="/" className="hover:text-[#f39c12] transition-colors">Home</Link>
+          <span className="text-[#f39c12] font-bold">&gt;</span>
+          <Link href="/products/pharma" className="hover:text-[#f39c12] transition-colors">Pharma</Link>
+          <span className="text-[#f39c12] font-bold">&gt;</span>
+          <span className="text-gray-500">Oncology</span>
+        </div>
       </div>
-    </ProductPageTemplate>
+
+      {/* 3. Main Content - 2 Column Circular Layout */}
+      <section className="py-24 bg-white">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24">
+          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+
+            {/* Left Column: Circular Image */}
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+              <div className="relative w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full overflow-hidden border-8 border-gray-50 shadow-2xl">
+                <Image
+                  src="/products/pharma/oncology-1.jpeg"
+                  alt="Oncology Solution"
+                  fill
+                  className="object-cover"
+                />
+                {/* Small indicator dot at bottom center */}
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg">
+                  <div className="w-10 h-10 border-4 border-[#f39c12] border-t-transparent rounded-full animate-spin-slow"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Text Content */}
+            <div className="w-full lg:w-1/2 space-y-8 text-[#5e6271] text-lg leading-relaxed">
+              <p>
+                With great passion and commitment of addressing the fast-rising incidence rates of cancer, we at Rheo are relentlessly working on early detection with Ai, treatment with various innovative medicines including the latest generation biosimilars.
+              </p>
+
+              <p>
+                With a data base of 1.5 billion records, we have proved that cancers can be detected early with routine biological tests.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Contact Banner */}
+      <ContactBanner />
+
+    </div>
   );
 }

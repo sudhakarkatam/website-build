@@ -1,52 +1,76 @@
-import ProductPageTemplate from "@/components/ProductPageTemplate";
-
-export const metadata = {
-  title: "CNS | Rheo Pharma",
-  description: "Innovative solutions for Central Nervous System disorders.",
-};
-
-const pharmaSidebarLinks = [
-  { name: "CVS & Diabetes", href: "/products/cvs-diabetes" },
-  { name: "Oncology", href: "/products/oncology" },
-  { name: "Biosimilars & Vaccines", href: "/products/biosimilars-vaccines" },
-  { name: "CNS", href: "/products/cns" },
-  { name: "Dermatology", href: "/products/dermatology" },
-  { name: "Respiratory", href: "/products/respiratory" },
-  { name: "Nutraceutical & Supplements", href: "/products/nutraceutical-supplements" },
-  { name: "APIs", href: "/products/api" },
-];
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import ContactBanner from "@/components/ContactBanner";
 
 export default function CNSPage() {
   return (
-    <ProductPageTemplate 
-      title="CNS" 
-      category="Pharma" 
-      sidebarLinks={pharmaSidebarLinks}
-      mainImage="/products/pharma/CNS.jpeg"
-      bannerImage="/products/pharma/product-banner.jpeg"
-    >
-      <div className="space-y-6">
-        <p>
-          Central Nervous System (CNS) disorders present some of the most complex challenges in modern medicine. At Rheo Pharma, we take a 360º approach to diagnosing and treating CNS ailments, focusing on innovative therapeutic options that improve the quality of life for patients and their families.
-        </p>
-        
-        <p>
-          Our CNS portfolio covers a wide range of conditions, from mental health disorders like depression and anxiety to neurodegenerative diseases like Alzheimer's and Parkinson's. We are committed to advancing the science of brain health through continuous research and development.
-        </p>
+    <div className="flex flex-col w-full min-h-screen bg-white">
+      {/* 1. Hero Banner - Match Screenshot */}
+      <section className="relative h-[300px] md:h-[400px] flex items-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/products/pharma/CNS-1.jpeg" 
+            alt="CNS Banner" 
+            fill 
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/20"></div>
+        </div>
+        <div className="max-w-[1400px] mx-auto w-full px-6 md:px-12 lg:px-24 relative z-10">
+          <h1 className="text-4xl md:text-5xl lg:text-[60px] font-bold text-white mb-4 tracking-tight drop-shadow-md">
+            CNS
+          </h1>
+        </div>
+      </section>
 
-        <h3 className="text-2xl font-bold text-[#121f45] mt-10 mb-6">Therapeutic Coverage</h3>
-        <ul className="checkmark-list">
-          <li>Advanced treatments for Depression and Anxiety disorders.</li>
-          <li>Innovative therapies for Epilepsy and Seizure management.</li>
-          <li>Neuroprotective agents for neurodegenerative diseases.</li>
-          <li>Effective solutions for Schizophrenia and other psychotic disorders.</li>
-          <li>Management tools for Sleep disorders and cognitive health.</li>
-        </ul>
-
-        <p className="mt-8">
-          We understand the profound impact that CNS disorders have on individuals and society. That's why we work tirelessly to ensure that patients have access to the best possible treatments, providing support and innovation at every step of their journey.
-        </p>
+      {/* 2. Breadcrumbs */}
+      <div className="bg-[#f8f9fc] py-6 border-b border-gray-100">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24 flex items-center space-x-3 text-[15px] font-medium text-[#121f45]">
+          <Link href="/" className="hover:text-[#f39c12] transition-colors">Home</Link>
+          <span className="text-[#f39c12] font-bold">&gt;</span>
+          <Link href="/products/pharma" className="hover:text-[#f39c12] transition-colors">Pharma</Link>
+          <span className="text-[#f39c12] font-bold">&gt;</span>
+          <span className="text-gray-500">CNS</span>
+        </div>
       </div>
-    </ProductPageTemplate>
+
+      {/* 3. Main Content - 2 Column Circular Layout */}
+      <section className="py-24 bg-white">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-12 lg:px-24">
+          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+            
+            {/* Left Column: Circular Image */}
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
+              <div className="relative w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full overflow-hidden border-8 border-gray-50 shadow-2xl">
+                <Image 
+                  src="/products/pharma/CNS.jpeg" 
+                  alt="CNS Solution" 
+                  fill 
+                  className="object-cover"
+                />
+                {/* Small indicator dot at bottom center */}
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg">
+                   <div className="w-10 h-10 border-4 border-[#f39c12] border-t-transparent rounded-full animate-spin-slow"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Text Content */}
+            <div className="w-full lg:w-1/2 space-y-8 text-[#5e6271] text-lg leading-relaxed">
+              <p>
+                At Rheo, we are working to provide a 360º approach in the way various CNS disease ailments are diagnosed and treated by offering a range of innovative solutions especially in the areas of stroke management, Depression, Anxiety, Psychosis are treated.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Contact Banner */}
+      <ContactBanner />
+      
+    </div>
   );
 }
