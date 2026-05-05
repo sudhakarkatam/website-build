@@ -30,10 +30,10 @@ export default function DiagnosticsPage() {
       <section className="relative h-[350px] md:h-[450px] flex items-center overflow-hidden">
         {/* Banner Image */}
         <div className="absolute inset-0 z-0">
-          <Image 
-            src="/products/diagnostics/diagostics-banner.jpeg" 
-            alt="Diagnostics Banner" 
-            fill sizes="100vw" sizes="100vw" 
+          <Image
+            src="/products/diagnostics/diagostics-banner.jpeg"
+            alt="Diagnostics Banner"
+            fill sizes="100vw"
             className="object-cover"
             priority
           />
@@ -59,22 +59,22 @@ export default function DiagnosticsPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {cards.map((card, idx) => (
               <div key={idx} className="group relative h-[420px] bg-white shadow-sm overflow-hidden rounded-sm cursor-pointer">
-                
+
                 {/* Background Image Container */}
                 <div className="absolute inset-0 z-0 overflow-hidden">
-                   <Image 
-                    src={card.img} 
-                    alt={card.title} 
-                    fill sizes="100vw" sizes="100vw" 
+                  <Image
+                    src={card.img}
+                    alt={card.title}
+                    fill sizes="100vw"
                     className="object-cover transition-transform duration-[800ms] ease-out group-hover:scale-110"
-                   />
+                  />
                 </div>
 
                 {/* Idle State: Bottom Corner Indicator */}
                 <div className="absolute bottom-4 right-4 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center text-[#f39c12] z-10 group-hover:opacity-0 transition-opacity duration-300 shadow-md">
-                   <svg className="w-5 h-5 rotate-45 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                   </svg>
+                  <svg className="w-5 h-5 rotate-45 transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                  </svg>
                 </div>
 
                 {/* Hover Overlay - Slides up from the bottom */}
