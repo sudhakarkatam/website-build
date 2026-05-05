@@ -12,7 +12,7 @@ export default function OncologyPage() {
           <Image
             src="/products/pharma/oncology-3.jpeg"
             alt="Oncology Banner"
-            fill
+            fill sizes="100vw"
             className="object-cover"
             priority
           />
@@ -47,7 +47,7 @@ export default function OncologyPage() {
                 <Image
                   src="/products/pharma/oncology-1.jpeg"
                   alt="Oncology Solution"
-                  fill
+                  fill sizes="100vw"
                   className="object-cover"
                 />
                 {/* Small indicator dot at bottom center */}

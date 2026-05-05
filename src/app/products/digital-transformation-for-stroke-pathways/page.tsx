@@ -12,7 +12,7 @@ export default function StrokePathwaysPage() {
           <Image 
             src="/products/diagnostics/digital-transform-banner.jpeg" 
             alt="Stroke Pathways Banner" 
-            fill 
+            fill sizes="100vw" sizes="100vw" 
             className="object-cover"
             priority
           />
@@ -47,7 +47,7 @@ export default function StrokePathwaysPage() {
                 <Image 
                   src="/products/diagnostics/new-dig-3.jpeg" 
                   alt="Digital Transformation Stroke" 
-                  fill 
+                  fill sizes="100vw" sizes="100vw" 
                   className="object-cover"
                 />
                 {/* Small indicator dot at bottom center (seen in screenshot) */}

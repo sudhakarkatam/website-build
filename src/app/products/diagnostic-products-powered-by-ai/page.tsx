@@ -12,7 +12,7 @@ export default function DiagnosticsAIPage() {
           <Image 
             src="/products/diagnostics/banner-1.jpeg" 
             alt="AI Diagnostics Banner" 
-            fill 
+            fill sizes="100vw" sizes="100vw" 
             className="object-cover"
             priority
           />
@@ -47,7 +47,7 @@ export default function DiagnosticsAIPage() {
                 <Image 
                   src="/products/diagnostics/ECG-AI-Diagosis.jpeg" 
                   alt="ECG AI Diagnosis" 
-                  fill 
+                  fill sizes="100vw" sizes="100vw" 
                   className="object-cover"
                 />
                 {/* Small indicator dot at bottom center (seen in screenshot) */}

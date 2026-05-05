@@ -12,7 +12,7 @@ export default function CVSDiabetesPage() {
           <Image 
             src="/products/pharma/CVS-Diabetes-1.jpeg" 
             alt="CVS & Diabetes Banner" 
-            fill 
+            fill sizes="100vw" sizes="100vw" 
             className="object-cover"
             priority
           />
@@ -47,7 +47,7 @@ export default function CVSDiabetesPage() {
                 <Image 
                   src="/products/pharma/CVS-Diabetes.jpeg" 
                   alt="CVS & Diabetes Solution" 
-                  fill 
+                  fill sizes="100vw" sizes="100vw" 
                   className="object-cover"
                 />
                 {/* Small indicator dot at bottom center */}

@@ -12,7 +12,7 @@ export default function ConnectedHealthcarePage() {
           <Image
             src="/products/diagnostics/connected-healthcare (1).jpeg"
             alt="Connected Healthcare Banner"
-            fill
+            fill sizes="100vw"
             className="object-cover"
             priority
           />
@@ -47,7 +47,7 @@ export default function ConnectedHealthcarePage() {
                 <Image
                   src="/products/diagnostics/connected-healthcare.jpeg"
                   alt="Connected Healthcare Solution"
-                  fill
+                  fill sizes="100vw"
                   className="object-cover"
                 />
                 {/* Small indicator dot at bottom center */}

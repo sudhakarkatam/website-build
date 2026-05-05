@@ -33,7 +33,7 @@ export default function DiagnosticsPage() {
           <Image 
             src="/products/diagnostics/diagostics-banner.jpeg" 
             alt="Diagnostics Banner" 
-            fill 
+            fill sizes="100vw" sizes="100vw" 
             className="object-cover"
             priority
           />
@@ -65,7 +65,7 @@ export default function DiagnosticsPage() {
                    <Image 
                     src={card.img} 
                     alt={card.title} 
-                    fill 
+                    fill sizes="100vw" sizes="100vw" 
                     className="object-cover transition-transform duration-[800ms] ease-out group-hover:scale-110"
                    />
                 </div>

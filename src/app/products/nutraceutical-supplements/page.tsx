@@ -12,7 +12,7 @@ export default function NutraceuticalSupplementsPage() {
           <Image 
             src="/products/pharma/product-banner.jpeg" 
             alt="Nutraceutical & Supplements Banner" 
-            fill 
+            fill sizes="100vw" sizes="100vw" 
             className="object-cover"
             priority
           />
@@ -47,7 +47,7 @@ export default function NutraceuticalSupplementsPage() {
                 <Image 
                   src="/products/pharma/gummies.jpeg" 
                   alt="Nutraceutical & Supplements Solution" 
-                  fill 
+                  fill sizes="100vw" sizes="100vw" 
                   className="object-cover"
                 />
                 {/* Small indicator dot at bottom center */}

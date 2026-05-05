@@ -12,7 +12,7 @@ export default function DermatologyPage() {
           <Image 
             src="/products/pharma/Dermatology-banner.jpeg" 
             alt="Dermatology Banner" 
-            fill 
+            fill sizes="100vw" sizes="100vw" 
             className="object-cover"
             priority
           />
@@ -47,7 +47,7 @@ export default function DermatologyPage() {
                 <Image 
                   src="/products/pharma/Dermatology.jpeg" 
                   alt="Dermatology Solution" 
-                  fill 
+                  fill sizes="100vw" sizes="100vw" 
                   className="object-cover"
                 />
                 {/* Small indicator dot at bottom center */}

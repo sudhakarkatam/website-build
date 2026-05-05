@@ -5,6 +5,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import RouteLoader from "@/components/RouteLoader";
 import { Suspense } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const publicSans = Public_Sans({
   variable: "--font-public-sans",
@@ -25,13 +26,14 @@ export default function RootLayout({
     <html lang="en" className={`${publicSans.variable} min-h-screen antialiased scroll-smooth`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body className="flex flex-col min-h-screen bg-white text-zinc-900">
         <Suspense fallback={null}>
-           <RouteLoader />
+          <RouteLoader />
         </Suspense>
         <Navigation />
         <main className="flex-grow">
           {children}
         </main>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   );

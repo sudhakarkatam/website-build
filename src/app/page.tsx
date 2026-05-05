@@ -82,6 +82,44 @@ export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const formData = new FormData(e.target);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      country: formData.get("country"),
+      date: formData.get("date"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const resData = await res.json();
+
+      if (resData.success) {
+        alert("Message sent successfully!");
+        e.target.reset();
+      } else {
+        alert("Failed to send message. Please try again later.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const productsScrollRef = useRef<HTMLDivElement>(null);
   const testimonialsScrollRef = useRef<HTMLDivElement>(null);
@@ -671,23 +709,26 @@ export default function Home() {
                 <span className="text-[#F58220] font-bold tracking-widest uppercase text-[13px] mb-2 block underline underline-offset-8 decoration-2">- GET IN TOUCH -</span>
                 <h2 className="text-4xl md:text-[42px] font-medium text-[#1c2c52]">Enquiry</h2>
               </div>
-              <form className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <input type="text" placeholder="Name*" className="w-full bg-white border border-gray-100 rounded-sm px-4 py-3.5 outline-none focus:ring-1 focus:ring-[#F58220] placeholder-gray-500 text-[15px]" required />
-                  <input type="email" placeholder="Email*" className="w-full bg-white border border-gray-100 rounded-sm px-4 py-3.5 outline-none focus:ring-1 focus:ring-[#F58220] placeholder-gray-500 text-[15px]" required />
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <input type="text" name="name" placeholder="Name*" className="w-full bg-white border border-gray-100 rounded-sm px-4 py-3.5 outline-none focus:ring-1 focus:ring-[#F58220] placeholder-gray-500 text-[15px]" required />
+                  <input type="email" name="email" placeholder="Email*" className="w-full bg-white border border-gray-100 rounded-sm px-4 py-3.5 outline-none focus:ring-1 focus:ring-[#F58220] placeholder-gray-500 text-[15px]" required />
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <input type="text" placeholder="Country*" className="w-full bg-white border border-gray-100 rounded-sm px-4 py-3.5 outline-none focus:ring-1 focus:ring-[#F58220] placeholder-gray-500 text-[15px]" required />
-                  <input type="text" placeholder="dd-mm-yyyy" className="w-full bg-white border border-gray-100 rounded-sm px-4 py-3.5 outline-none focus:ring-1 focus:ring-[#F58220] placeholder-gray-500 text-[15px]" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <input type="text" name="country" placeholder="Country*" className="w-full bg-white border border-gray-100 rounded-sm px-4 py-3.5 outline-none focus:ring-1 focus:ring-[#F58220] placeholder-gray-500 text-[15px]" required />
+                  <div className="relative">
+                    <input type="date" name="date" className="w-full bg-white border border-gray-100 rounded-sm px-4 py-3.5 outline-none focus:ring-1 focus:ring-[#F58220] text-gray-500 text-[15px]" style={{ colorScheme: 'light' }} />
+                  </div>
                 </div>
-                <select className="w-full bg-white border border-gray-100 rounded-sm px-4 py-3.5 outline-none focus:ring-1 focus:ring-[#F58220] text-gray-500 text-[15px]">
+                <select name="subject" className="w-full bg-white border border-gray-100 rounded-sm px-4 py-3.5 outline-none focus:ring-1 focus:ring-[#F58220] text-gray-500 text-[15px]">
                   <option value="">-Select-</option>
-                  <option value="product">Product Enquiry</option>
-                  <option value="business">Business Collaboration</option>
+                  <option value="Product Enquiry">Product Enquiry</option>
+                  <option value="Business Collaboration">Business Collaboration</option>
+                  <option value="Diagnostics">Diagnostics</option>
                 </select>
-                <textarea rows={4} placeholder="Message" className="w-full bg-white border border-gray-100 rounded-sm px-4 py-3.5 outline-none focus:ring-1 focus:ring-[#F58220] resize-none placeholder-gray-500 text-[15px]"></textarea>
-                <button type="submit" className="bg-[#F58220] text-white font-bold text-sm tracking-wider py-4 px-8 hover:bg-[#e0751b] transition-colors mt-2 inline-flex items-center group shadow-sm rounded-sm">
-                  SEND NOW <span className="ml-2 font-black group-hover:translate-x-1 transition-transform">&raquo;</span>
+                <textarea name="message" rows={4} placeholder="Message" className="w-full bg-white border border-gray-100 rounded-sm px-4 py-3.5 outline-none focus:ring-1 focus:ring-[#F58220] resize-none placeholder-gray-500 text-[15px]"></textarea>
+                <button type="submit" disabled={isSubmitting} className="bg-[#F58220] text-white font-bold text-sm tracking-wider py-4 px-8 hover:bg-[#e0751b] transition-colors mt-2 inline-flex items-center group shadow-sm rounded-sm disabled:opacity-70 disabled:cursor-not-allowed">
+                  {isSubmitting ? "SENDING..." : "SEND NOW"} <span className="ml-2 font-black group-hover:translate-x-1 transition-transform">&raquo;</span>
                 </button>
               </form>
             </div>

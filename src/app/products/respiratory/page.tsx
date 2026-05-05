@@ -12,7 +12,7 @@ export default function RespiratoryPage() {
           <Image 
             src="/products/pharma/Respiratory-banner-1.jpeg" 
             alt="Respiratory Banner" 
-            fill 
+            fill sizes="100vw" sizes="100vw" 
             className="object-cover"
             priority
           />
@@ -47,7 +47,7 @@ export default function RespiratoryPage() {
                 <Image 
                   src="/products/pharma/respiratory.jpeg" 
                   alt="Respiratory Solution" 
-                  fill 
+                  fill sizes="100vw" sizes="100vw" 
                   className="object-cover"
                 />
                 {/* Small indicator dot at bottom center */}

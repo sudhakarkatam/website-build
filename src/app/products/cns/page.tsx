@@ -12,7 +12,7 @@ export default function CNSPage() {
           <Image 
             src="/products/pharma/CNS-1.jpeg" 
             alt="CNS Banner" 
-            fill 
+            fill sizes="100vw" sizes="100vw" 
             className="object-cover"
             priority
           />
@@ -47,7 +47,7 @@ export default function CNSPage() {
                 <Image 
                   src="/products/pharma/CNS.jpeg" 
                   alt="CNS Solution" 
-                  fill 
+                  fill sizes="100vw" sizes="100vw" 
                   className="object-cover"
                 />
                 {/* Small indicator dot at bottom center */}

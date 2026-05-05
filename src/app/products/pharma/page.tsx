@@ -63,7 +63,7 @@ export default function PharmaPage() {
           <Image 
             src="/products/pharma/product-banner.jpeg" 
             alt="Pharma Banner" 
-            fill 
+            fill sizes="100vw" sizes="100vw" 
             className="object-cover"
             priority
           />
@@ -95,7 +95,7 @@ export default function PharmaPage() {
                    <Image 
                     src={card.img} 
                     alt={card.title} 
-                    fill 
+                    fill sizes="100vw" sizes="100vw" 
                     className="object-cover transition-transform duration-[800ms] ease-out group-hover:scale-110"
                    />
                 </div>

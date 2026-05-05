@@ -40,7 +40,7 @@ export default function ProductPageTemplate({
             <Image 
               src={bannerImage} 
               alt={`${title} Banner`} 
-              fill 
+              fill sizes="100vw" sizes="100vw" 
               className="object-cover"
               priority
             />
@@ -81,7 +81,7 @@ export default function ProductPageTemplate({
                     <Image 
                       src={mainImage} 
                       alt={title} 
-                      fill 
+                      fill sizes="100vw" sizes="100vw" 
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   ) : (

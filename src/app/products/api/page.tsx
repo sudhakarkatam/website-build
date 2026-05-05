@@ -12,7 +12,7 @@ export default function APIPage() {
           <Image 
             src="/products/pharma/API-banner.jpeg" 
             alt="APIs Banner" 
-            fill 
+            fill sizes="100vw" sizes="100vw" 
             className="object-cover"
             priority
           />
@@ -47,7 +47,7 @@ export default function APIPage() {
                 <Image 
                   src="/products/pharma/API-reactor.jpeg" 
                   alt="APIs Solution" 
-                  fill 
+                  fill sizes="100vw" sizes="100vw" 
                   className="object-cover"
                 />
                 {/* Small indicator dot at bottom center */}

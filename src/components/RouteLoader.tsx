@@ -11,7 +11,7 @@ export default function RouteLoader() {
   useEffect(() => {
     // Show loader on route change
     setLoading(true);
-    
+
     // Simulate a minimum loading time for the animation to be seen
     const timer = setTimeout(() => {
       setLoading(false);
@@ -25,11 +25,11 @@ export default function RouteLoader() {
   return (
     <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-white transition-opacity duration-300">
       <div className="relative w-64 h-64">
-        <Image 
-          src="/Animated-RHEO-Logo.gif" 
-          alt="Loading..." 
-          fill 
-          unoptimized 
+        <Image
+          src="/Animated-RHEO-Logo.gif"
+          alt="Loading..."
+          fill sizes="100vw"
+          unoptimized
           className="object-contain"
         />
       </div>

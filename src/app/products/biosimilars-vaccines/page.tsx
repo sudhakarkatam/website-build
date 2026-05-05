@@ -12,7 +12,7 @@ export default function BiosimilarsPage() {
           <Image 
             src="/products/pharma/Biosimilars-1.jpeg" 
             alt="Biosimilars & Vaccines Banner" 
-            fill 
+            fill sizes="100vw" sizes="100vw" 
             className="object-cover"
             priority
           />
@@ -47,7 +47,7 @@ export default function BiosimilarsPage() {
                 <Image 
                   src="/products/pharma/biosimilar.jpeg" 
                   alt="Biosimilars Solution" 
-                  fill 
+                  fill sizes="100vw" sizes="100vw" 
                   className="object-cover"
                 />
                 {/* Small indicator dot at bottom center */}
