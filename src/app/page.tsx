@@ -244,13 +244,13 @@ export default function Home() {
         </div>
 
         {/* Center Hero Content Area */}
-        <div className="flex-1 relative h-[calc(100vh-90px)] lg:h-[calc(100vh-100px)] min-h-[500px] lg:min-h-[600px] overflow-hidden min-w-0 bg-black group">
+        <div className="flex-1 relative h-[calc(100svh-90px)] lg:h-[calc(100svh-100px)] min-h-[500px] lg:min-h-[600px] overflow-hidden min-w-0 bg-black group">
 
           {/* Full Width Image Slider */}
           <div className="absolute inset-0 flex transition-transform duration-[1000ms] ease-[cubic-bezier(0.25,1,0.5,1)]" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
             {slides.map((slide, idx) => (
               <div key={idx} className="w-full h-full flex-shrink-0 relative">
-                <Image src={slide.img} alt={slide.title} fill className="object-cover object-center" priority sizes="100vw" />
+                <Image src={slide.img} alt={slide.title} fill className="object-cover object-center" priority={idx === 0} sizes="100vw" />
               </div>
             ))}
           </div>
