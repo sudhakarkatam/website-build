@@ -87,7 +87,7 @@ export default function Home() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     const formData = new FormData(e.target);
     const data = {
       name: formData.get("name"),
@@ -228,8 +228,8 @@ export default function Home() {
                 <button
                   onClick={() => jumpToSlide(i)}
                   className={`font-medium transition-all duration-300 ease-out select-none py-1.5 w-full flex justify-center text-[15px] md:text-[16px] lg:text-[18px] ${isActive
-                      ? 'text-white font-bold drop-shadow-md scale-110'
-                      : 'text-[#121f45] hover:text-white/80'
+                    ? 'text-white font-bold drop-shadow-md scale-110'
+                    : 'text-[#121f45] hover:text-white/80'
                     }`}
                   style={{ fontFamily: "'Public Sans', sans-serif" }}
                 >
@@ -484,17 +484,15 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-medium text-[var(--color-blue-deep)]">Leadership Team</h2>
           </div>
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {[
               { name: "Dr. Y. Ramesh Reddy", role: "CMD", bio: "A pharmacist with a vision of connecting every needy patient with innovative treatment options by making them Accessible, Affordable and Available (3A) across the globe.", img: "/Ramesh-Reddy.jpeg" },
               { name: "Mrs. Lakshmi Yarramreddy", role: "Director & Founder", bio: "A post-graduate in finance, manages the financials of the company including financial statements, banking and Statuary compliance.", img: "/Lakshmi.jpeg" },
-              { name: "Mr. Krishna Kishore .A", role: "Director", bio: "A seasoned marketing professional with 25+ year of experiences across domains from a Medical representative to top positions in various companies.", img: "/Krishna-Kishore.jpeg" },
-              { name: "Mr. P. Venkateswara Reddy", role: "Director", bio: "Mr. Venkateswara Reddy holds master's in pharmacy. Having worked in various MNCs at leadership positions.", img: "/Venkateswara-Reddy.jpeg" },
-              { name: "Mr. B. Sivarami Reddy", role: "Director API business", bio: "Mr. Siva Reddy having enriching experience in various Multinational pharmaceutical companies in R&D of API, leads the operations.", img: "/Siva-Rami-Reddy.jpeg" }
+              { name: "Mr. Krishna Kishore .A", role: "Director", bio: "A seasoned marketing professional with 25+ year of experiences across domains from a Medical representative to top positions in various companies.", img: "/Krishna-Kishore.jpeg" }
             ].map((leader, i) => (
               <div key={i} className="bg-white rounded-sm shadow-md hover:shadow-xl transition-all border border-gray-50 flex flex-col items-center group cursor-pointer">
-                <div className="w-full h-64 bg-slate-100 relative overflow-hidden">
-                  <Image src={leader.img} alt={leader.name} fill className="object-cover object-top group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 20vw" />
+                <div className="w-full aspect-[4/5] bg-slate-100 relative overflow-hidden">
+                  <Image src={leader.img} alt={leader.name} fill className="object-cover object-top group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 768px) 100vw, 33vw" />
                 </div>
                 <div className="p-6 text-center">
                   <h4 className="text-[17px] font-bold text-[#1c2c52] mb-1 leading-tight">{leader.name}</h4>

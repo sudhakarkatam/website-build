@@ -58,7 +58,7 @@ export default function DiagnosticsPage() {
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {cards.map((card, idx) => (
-              <div key={idx} className="group relative h-[420px] bg-white shadow-sm overflow-hidden rounded-sm cursor-pointer">
+              <Link href={card.href} key={idx} className="group relative h-[420px] bg-white shadow-sm overflow-hidden rounded-sm cursor-pointer block">
 
                 {/* Background Image Container */}
                 <div className="absolute inset-0 z-0 overflow-hidden">
@@ -86,14 +86,14 @@ export default function DiagnosticsPage() {
                   <p className="text-white/80 text-[14px] leading-relaxed mb-8 line-clamp-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-400">
                     {card.desc}
                   </p>
-                  <Link href={card.href} className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-500">
-                    <button className="bg-[#f39c12] text-white font-bold text-[12px] tracking-widest px-8 py-3.5 hover:bg-orange-600 transition-colors uppercase rounded-sm shadow-lg">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-500">
+                    <span className="inline-block bg-[#f39c12] text-white font-bold text-[12px] tracking-widest px-8 py-3.5 hover:bg-orange-600 transition-colors uppercase rounded-sm shadow-lg">
                       READ MORE &raquo;
-                    </button>
-                  </Link>
+                    </span>
+                  </div>
                 </div>
 
-              </div>
+              </Link>
             ))}
           </div>
         </div>
