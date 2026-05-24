@@ -14,7 +14,11 @@ const publicSans = Public_Sans({
 
 export const metadata: Metadata = {
   title: "Rheo Pharma Pvt. Ltd. | HealthTech Innovations",
-  description: "Global pharmaceutical and healthcare technology firm leveraging AI for diagnostics, pharmaceuticals, and digital health.",
+  description:
+    "Global pharmaceutical and healthcare technology firm leveraging AI for diagnostics, pharmaceuticals, and digital health.",
+  icons: {
+    icon: "/rheo-logo-1.png",
+  },
 };
 
 export default function RootLayout({
