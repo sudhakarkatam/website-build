@@ -16,10 +16,11 @@ export const metadata: Metadata = {
   title: "Rheo Pharma Pvt. Ltd. | HealthTech Innovations",
   description:
     "Global pharmaceutical and healthcare technology firm leveraging AI for diagnostics, pharmaceuticals, and digital health.",
+
   icons: {
-    icon: "/rheo-logo-1.png",
-    shortcut: "/rheo-logo-1.png",
-    apple: "/rheo-logo-1.png",
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
   },
 };
 
